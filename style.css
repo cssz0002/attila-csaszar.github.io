@@ -16,21 +16,30 @@
 }
 
 html {
-  height: 100%;
   font-size: 62.5%;
 }
 
 /* LOGO */
 .hz_logo img {
   display: inline-block;
-  margin-top: 3.2rem;
-  margin-bottom: 3.2rem;
   height: 4.8rem;
 }
 
 .hz_logo {
   text-align: center;
+  padding-block: 3.2rem;
   /* height: 4.8rem; */
+}
+
+/* Container -> "szerkeszthető" */
+.main {
+  padding: 2.4rem;
+  flex: 1;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
 }
 
 /* NAV BAR */
@@ -77,6 +86,10 @@ html {
 }
 
 /* CURRENT PAGE */
+a.current-page {
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.5), 0 0 0.25em var(--neon-blue);
+}
+
 a.current-page::after {
   transform: scale(1);
 }
@@ -86,12 +99,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   color: white;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
   background-color: var(--dark-grayish-blue);
 }
 
 /* PROFILE */
+.profile_main {
+  display: flex;
+  justify-content: center;
+}
+
 .profile_image {
   width: 100%;
   height: 100%;
@@ -105,6 +123,18 @@ body {
   border-radius: 50%;
   overflow: hidden;
   outline: var(--neon-green) 2px solid;
+}
+
+.info_heading {
+  color: orangered;
+}
+
+.info {
+  list-style: none;
+}
+
+.info li {
+  padding: 1.6rem;
 }
 
 /* BLOG */
@@ -141,6 +171,8 @@ body {
 }
 
 .post_image:hover + .post_text {
+  border: var(--neon-green) 2px solid;
+  border-radius: 1rem;
   transform: translateY(0);
 }
 
@@ -169,6 +201,7 @@ body {
 }
 .post_image_container-5 {
   background-image: url('images/ai.jpg');
+  background-position: 0 20%;
 }
 
 .post {
@@ -183,10 +216,33 @@ body {
   gap: 2.4rem;
 }
 
+.post:has(.post_image:hover) .post_heading {
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.5), 0 0 0.25em orangered;
+}
+
 /* FAQ */
+
+.faq-heading {
+  color: orangered;
+  text-align: center;
+}
 
 .faq__toggle {
   display: none;
+}
+
+.faq__question {
+  display: block;
+  cursor: pointer;
+  padding: 1.6rem;
+}
+
+.faq__question:hover {
+  color: orangered;
+}
+
+.faq__question path {
+  stroke: orangered;
 }
 
 .faq__content {
@@ -197,15 +253,23 @@ body {
   display: block;
 }
 
-/* Container -> "szerkeszthető" */
-.main {
-  padding: 2.4rem;
-  flex: 1;
+.faq__toggle:checked + .faq__question .faq__arrow {
+  transform: rotateX(180deg) translateY(2px);
 }
 
-.container {
-  display: flex;
-  height: 100%;
+.faq {
+  border-bottom: 1px solid black;
+}
+
+.faq__text {
+  padding: 1.6rem;
+}
+
+.faq-container {
+  color: black;
+  background-color: white;
+  border-radius: 1rem;
+  margin-top: 3.6rem;
 }
 
 /* ASIDE */
@@ -257,4 +321,58 @@ body {
   flex-shrink: 0;
   flex-grow: 0;
   border-left: var(--neon-blue) 4px solid;
+}
+
+/* DASHBOARD */
+.dashboard {
+  /* border-collapse: collapse; */
+  /* border: var(--neon-blue) 2px solid;
+  border-radius: 1rem; */
+  width: 100%;
+  text-align: center;
+}
+
+.empty_row {
+  border: none;
+}
+
+td,
+th {
+  border: orange 2px solid;
+  padding: 1.2rem;
+  border-radius: 1rem;
+}
+
+th {
+  color: orangered;
+  text-transform: uppercase;
+  border: orangered 4px solid;
+}
+
+.portfolio td {
+  border: var(--neon-green) 4px solid;
+}
+
+.progress_bar_fillout {
+  height: 100%;
+  width: 50%;
+  background-color: orangered;
+}
+
+.progress_bar {
+  background-color: white;
+  border-radius: 100px;
+  margin-top: 2.4rem;
+  overflow: hidden;
+  width: 100%;
+  height: 2.4rem;
+  box-shadow: 0 0 0 2px orangered;
+}
+
+.progress_bar::after {
+  content: 'ASD';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: black;
 }
